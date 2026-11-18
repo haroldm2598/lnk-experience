@@ -11,8 +11,26 @@ export const linkedinFormSchema = z.object({
     }),
     endDate: z
         .object({
-            month: z.string().min(1, "End month is required"),
-            year: z.string().min(1, "End year is required"),
+            month: z.string(),
+            year: z.string(),
         })
         .optional(),
+}).superRefine(({ isCurrent, endDate }, context) => {
+    if (!isCurrent && !endDate?.month) {
+        context.addIssue({
+            code: "custom",
+            message: "End month is required",
+            path: ["endDate", "month"],
+        });
+    }
+
+    if (!isCurrent && !endDate?.year) {
+        context.addIssue({
+            code: "custom",
+            message: "End year is required",
+            path: ["endDate", "year"],
+        });
+    }
 });
+
+export type LinkedinExperience = z.infer<typeof linkedinFormSchema>;
