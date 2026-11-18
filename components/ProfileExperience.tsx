@@ -34,7 +34,7 @@ export default function ProfileExperience() {
                                     Add
                                 </Button>
                             </DialogTrigger>
-                            <DialogContent className="max-h-[calc(100dvh-2rem)] max-w-4xl overflow-y-auto [scrollbar-width:none] [&::-webkit-scrollbar]:hidden border-0 bg-transparent p-0 shadow-none sm:w-[calc(100%-3rem)]">
+                            <DialogContent className="max-h-[calc(100dvh-2rem)] max-w-4xl overflow-y-auto scrollbar-none [&::-webkit-scrollbar]:hidden border-0 bg-transparent p-0 shadow-none sm:w-[calc(100%-3rem)]">
                                 <LinkedinForm
                                     onSaved={() => setOpen(false)}
                                     setDataExp={setDataExp}
